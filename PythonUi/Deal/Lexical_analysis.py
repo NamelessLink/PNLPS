@@ -6,20 +6,22 @@ SECRET_KEY = '3btBkBGWqyj95KmaYImiPn8qMhav9svh'
 Client = AipNlp(APP_ID, API_KEY, SECRET_KEY)
 
 
-def lexer(text = ""):
+def lexer(text=""):
     word_list = []
     str1 = ""
     temp_result = Client.lexer(text)
     for item in temp_result['items']:
         for word in item['basic_words']:
             word_list.append(word)
-            str1 += word + "/"
+
+    str1 = '/'.join(word_list)
 
     lexer_dict = {
         'text': temp_result['text'],
         'lexer': str1,
         'word_list' : word_list
     }
+    # print(lexer_dict)
     return lexer_dict
 
 

@@ -91,6 +91,25 @@
      <string>确定</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>260</y>
+      <width>471</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>输入格式：词 词频 词性（即三个属性以空格隔开）</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

@@ -1,6 +1,7 @@
 from aip import AipNlp
 
 from Deal import Lexical_analysis
+from Deal.dict_add import by_dict_division
 
 APP_ID = '16075105'
 API_KEY = 'a6buAu53EH23iuOkjlL53aZQ'
@@ -19,7 +20,8 @@ def encet(text = ""):
         right_list.append(word['correct_frag'])
     encet_dict = {
         '原文本': text,
-        '分词结果': lexer_dict['lexer'],
+        '分词结果': by_dict_division(text),
+        '分词结果 by 百度': lexer_dict['lexer'],
         '错词': wrong_list,
         '错词纠正': right_list,
         '准确率': temp_result['item']['score'],

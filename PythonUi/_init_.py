@@ -1,5 +1,6 @@
 import json
 import sys
+import jieba
 
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
@@ -7,6 +8,7 @@ from Deal import Typo_coorection, JsonFile
 from Deal import Affective_analysis
 from Deal.input_alt import str_alt
 from Deal.re_text import re_text
+from Deal.dict_add import dict_add_func, by_dict_division
 
 from Ui.MainWindow import *
 from Ui.Add_dict_Frame import *
@@ -51,9 +53,14 @@ class Open_Add_dict_Frame(QMainWindow, Ui_Add_dict_Frame):
             Tips.label.setText("请输入一个词组")
             Tips.show()
         else:
-            Result.show()
-            self.textEdit.clear()
-            self.close()
+            if dict_add_func(self.result) is True:
+                Tips.label.setText("词组入库成功")
+                Tips.show()
+                self.textEdit.clear()
+            else:
+                Tips.label.setText("词典中存在该词")
+                Tips.show()
+                self.textEdit.clear()
 
     # 取消按钮
     def slot_pushButton_Func(self):
@@ -65,7 +72,6 @@ class Open_Add_dict_Frame(QMainWindow, Ui_Add_dict_Frame):
     def get_text(self):
         if self.textEdit.toPlainText() != '':
             Text = re_text(self.textEdit.toPlainText())
-            print(Text)
             return Text
         else:
             return
@@ -221,7 +227,7 @@ class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
         JsonFile.jsonfile_save(result_dict, self.path)
         if result_dict['准确率'] == 0:
             str1 = '该文本认定无错别字\n原文本：' + result_dict['原文本'] + '\n分词结果：' + result_dict['分词结果']
-            print(str1)
+            # print(str1)
             Result.textEdit.setPlainText(str1)
             Result.show()
         else:

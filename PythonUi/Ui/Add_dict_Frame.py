@@ -57,6 +57,13 @@ class Ui_Add_dict_Frame(object):
                                         )
 
         Add_dict_Frame.setCentralWidget(self.centralwidget)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(90, 260, 471, 41))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(16)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
 
         self.retranslateUi(Add_dict_Frame)
         QtCore.QMetaObject.connectSlotsByName(Add_dict_Frame)
@@ -68,6 +75,7 @@ class Ui_Add_dict_Frame(object):
         self.label_2.setText(_translate("Add_dict_Frame", "输入词组："))
         self.pushButton.setText(_translate("Add_dict_Frame", "取消"))
         self.pushButton_2.setText(_translate("Add_dict_Frame", "确定"))
+        self.label_3.setText(_translate("Add_dict_Frame", "输入格式：词 词频 词性（即三个属性以空格隔开）"))
 
 
 
