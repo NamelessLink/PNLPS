@@ -15,7 +15,7 @@ def sentimentClassify(text = ""):
     classify_dict = {
         '原文本': temp_result['text'],
         '分词结果': by_dict_division(text),
-        '分词结果 by 百度': lexer_dict['lexer'],
+        # '分词结果 by 百度': lexer_dict['lexer'],
         '为消极类别概率': temp_result['items'][0]['negative_prob'],
         '为积极类别概率': temp_result['items'][0]['positive_prob'],
         '置信度': temp_result['items'][0]['confidence'],

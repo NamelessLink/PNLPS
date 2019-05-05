@@ -21,7 +21,7 @@ def encet(text = ""):
     encet_dict = {
         '原文本': text,
         '分词结果': by_dict_division(text),
-        '分词结果 by 百度': lexer_dict['lexer'],
+        # '分词结果 by 百度': lexer_dict['lexer'],
         '错词': wrong_list,
         '错词纠正': right_list,
         '准确率': temp_result['item']['score'],
