@@ -15,7 +15,7 @@ dist有已经打包好的exe，只需要运行\_init\_.exe即可。
 
 > [下载地址](https://www.python.org/downloads/release/python-372/)
 >
-> 选择![1557196257023](../../python%20test/PNLPS/assets/1557196257023.png)
+> 选择![1557196257023](https://github.com/NamelessLink/PNLPS/blob/master/assets/1557196257023.png)
 >
 > 下载后安装即可
 
