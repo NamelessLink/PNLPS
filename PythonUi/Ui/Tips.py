@@ -12,17 +12,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 class Ui_Tips(object):
     def setupUi(self, Tips):
         Tips.setObjectName("Tips")
-        Tips.resize(325, 180)
+        Tips.resize(650, 360)
         # Tips.setWindowFlags(Qt.Qt.FramelessWindowHint)
         self.label = QtWidgets.QLabel(Tips)
-        self.label.setGeometry(QtCore.QRect(10, 0, 311, 71))
+        self.label.setGeometry(QtCore.QRect(20, 0, 622, 142))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(13)
+        font.setPointSize(26)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(Tips)
-        self.pushButton.setGeometry(QtCore.QRect(130, 100, 71, 31))
+        self.pushButton.setGeometry(QtCore.QRect(260, 200, 142, 62))
         self.pushButton.setMouseTracking(False)
         self.pushButton.setObjectName("pushButton")
         self.pushButton.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"

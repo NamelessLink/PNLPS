@@ -12,40 +12,42 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 class Ui_Result(object):
     def setupUi(self, Result):
         Result.setObjectName("Result")
-        Result.resize(625, 438)
+        Result.resize(1250, 876)
         Result.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
         Result.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
         self.centralwidget = QtWidgets.QWidget(Result)
         self.centralwidget.setObjectName("centralwidget")
         self.centralwidget.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;background:white;")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(50, 70, 541, 271))
+        self.textEdit.setGeometry(QtCore.QRect(100, 140, 1082, 542))
         self.textEdit.setObjectName("textEdit")
         self.textEdit.setReadOnly(1)
         self.textEdit.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;")
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(10)
+        font.setPointSize(26)
         self.textEdit.setFont(font)
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 20, 81, 41))
+        self.label.setGeometry(QtCore.QRect(60, 40, 162, 82))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(22)
+        font.setPointSize(32)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(420, 370, 81, 41))
+        self.pushButton.setGeometry(QtCore.QRect(840, 740, 162, 82))
+        self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
         self.pushButton.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
                                       "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
                                       )
 
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(120, 370, 81, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(240, 740, 162, 82))
         self.pushButton_2.setMouseTracking(False)
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
                                         "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
                                         )

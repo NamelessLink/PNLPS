@@ -46,7 +46,7 @@ class Open_MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushButton_4_Func(self):
         i = 0
-        lenth = 7
+        lenth = 17
         self.dict = jsonfile_load('./Affective_analysis.json')
         self.list = dict_key_list(self.dict)
         if len(self.list) <= lenth:
