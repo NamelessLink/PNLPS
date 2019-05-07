@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/1.txt" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/2.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Affective_analysis.json" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/Deal/dict.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Typo_coorection.json" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dict.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_by_AA.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test_by_TC.txt" charset="GBK" />
   </component>
 </project>

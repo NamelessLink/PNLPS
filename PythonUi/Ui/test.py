@@ -1,22 +1,31 @@
-import json
-import time
+from Deal.dict_add import *
+List = []
 
-# a = {"a": "b",
-#      "c": "d",
-#      "e": "f",
-#      "G": "H"
-#      }
-#
-# json.dumps(a)
-#
-# with open("../test.json", "w") as f:
-#     json.dump(a, f)
-#     print("finish")
-#
-# with open("../1.txt", "a") as f1:
-#     s = "\n" + ",只有我不是大傻逼"
-#     f1.write(s)
-#     print("ok")
+Dict1 = {
+    "原文本": "我不喜欢吃西红柿",
+    "分词结果": "我/不/喜欢/吃/西红柿",
+    "为消极类别概率": 0.780057,
+    "为积极类别概率": 0.219943,
+    "置信度": 0.511237,
+    "最终判断结果": "消极"
+}
 
-print(time.time())
-print()
+Dict2 = {
+        "原文本": "我不喜欢这个电影，太令人沮丧了！",
+        "分词结果": "我/不/喜欢/这个/电影/，/太/令人/沮丧/了/！",
+        "错词": [],
+        "错词纠正": [],
+        "准确率": 0,
+        "替换后文本": "我不喜欢这个电影，太令人沮丧了！"
+}
+
+T = dict_key_list(Dict2)
+print(T[-6])
+print(Dict2[T[0]])
+
+H = "错词"
+print(dict_query(Dict2, H))
+
+List.append(Dict1)
+List.append(Dict2)
+

@@ -13,9 +13,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(627, 438)
-        MainWindow.setWindowFlags(Qt.Qt.FramelessWindowHint)
+        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
+        MainWindow.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;background:white;")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(60, 170, 121, 71))
         self.pushButton.setObjectName("pushButton")
@@ -32,28 +34,45 @@ class Ui_MainWindow(object):
 
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(440, 170, 121, 71))
-        self.pushButton_3.setMouseTracking(False)
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_3.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
+                                        "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
+                                        )
+
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(150, 290, 121, 71))
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
+                                        "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
+                                        )
+
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setGeometry(QtCore.QRect(340, 290, 121, 71))
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
                                         "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
                                         )
 
         self.Close_Button = QtWidgets.QPushButton(self.centralwidget)
         self.Close_Button.setGeometry(QtCore.QRect(585, 10, 30, 30))
         self.Close_Button.setObjectName("Close_Button")
-        self.Close_Button.setStyleSheet("QPushButton{border-image: url(./Ui/exit.png)}"
-                                        "QPushButton:hover{background-color: red;border-image: url(./Ui/exit.png)}"
+        self.Close_Button.setStyleSheet("QPushButton{border-image: url(exit.png)}"
+                                        "QPushButton:hover{background-color: red;border-image: url(exit.png)}"
                                         )
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 40, 271, 41))
+        self.label.setGeometry(QtCore.QRect(10, 40, 306, 41))
+
+        
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton_2.raise_()
         self.pushButton_3.raise_()
+        self.pushButton_4.raise_()
+        self.pushButton_5.raise_()
         self.Close_Button.raise_()
         self.label.raise_()
         self.pushButton.raise_()
@@ -68,7 +87,10 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "情感分析功能"))
         self.pushButton_2.setText(_translate("MainWindow", "错别字纠正"))
         self.pushButton_3.setText(_translate("MainWindow", "词组入库"))
+        self.pushButton_4.setText(_translate("MainWindow", "情感分析历史查看"))
+        self.pushButton_5.setText(_translate("MainWindow", "错别字纠正历史查看"))
         self.label.setText(_translate("MainWindow", "请选择需要使用的功能"))
+
 
 
 

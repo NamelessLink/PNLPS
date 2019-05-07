@@ -15,33 +15,35 @@ class Ui_Typo_coorection_Frame(object):
     def setupUi(self, Typo_coorection_Frame):
         Typo_coorection_Frame.setObjectName("Typo_coorection_Frame")
         Typo_coorection_Frame.resize(625, 438)
-        Typo_coorection_Frame.setWindowFlags(Qt.Qt.FramelessWindowHint)
+        Typo_coorection_Frame.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
+        Typo_coorection_Frame.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
         self.cwd = os.getcwd()  # 获取当前程序文件位置
         self.centralwidget = QtWidgets.QWidget(Typo_coorection_Frame)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;background:white;")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(240, 130, 351, 31))
         self.textEdit.setObjectName("textEdit")
         self.textEdit.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;")
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 40, 271, 41))
+        self.label.setGeometry(QtCore.QRect(30, 40, 221, 51))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(50, 130, 181, 31))
+        self.label_2.setGeometry(QtCore.QRect(30, 130, 201, 31))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(16)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(90, 190, 151, 31))
+        self.label_3.setGeometry(QtCore.QRect(80, 190, 151, 31))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(16)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
@@ -70,8 +72,8 @@ class Ui_Typo_coorection_Frame(object):
         self.Close_Button = QtWidgets.QPushButton(self.centralwidget)
         self.Close_Button.setGeometry(QtCore.QRect(585, 10, 30, 30))
         self.Close_Button.setObjectName("Close_Button")
-        self.Close_Button.setStyleSheet("QPushButton{border-image: url(./Ui/exit.png)}"
-                                        "QPushButton:hover{background-color: red;border-image: url(./Ui/exit.png)}"
+        self.Close_Button.setStyleSheet("QPushButton{border-image: url(exit.png)}"
+                                        "QPushButton:hover{background-color: red;border-image: url(exit.png)}"
                                         )
 
         self.textEdit_2 = QtWidgets.QTextEdit(self.centralwidget)

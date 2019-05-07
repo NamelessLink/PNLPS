@@ -12,24 +12,26 @@ class Ui_Add_dict_Frame(object):
     def setupUi(self, Add_dict_Frame):
         Add_dict_Frame.setObjectName("Add_dict_Frame")
         Add_dict_Frame.resize(625, 438)
-        Add_dict_Frame.setWindowFlags(Qt.Qt.FramelessWindowHint)
+        Add_dict_Frame.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
+        Add_dict_Frame.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
         self.centralwidget = QtWidgets.QWidget(Add_dict_Frame)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;background:white;")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(220, 210, 351, 31))
         self.textEdit.setObjectName("textEdit")
         self.textEdit.setStyleSheet("border:2px groove gray;border-radius:10px;padding:2px 4px;")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 40, 271, 41))
+        self.label.setGeometry(QtCore.QRect(30, 40, 191, 61))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(90, 210, 141, 31))
+        self.label_2.setGeometry(QtCore.QRect(90, 210, 121, 31))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
+        font.setFamily("黑体")
         font.setPointSize(16)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
@@ -51,18 +53,11 @@ class Ui_Add_dict_Frame(object):
         self.Close_Button = QtWidgets.QPushButton(self.centralwidget)
         self.Close_Button.setGeometry(QtCore.QRect(585, 10, 30, 30))
         self.Close_Button.setObjectName("Close_Button")
-        self.Close_Button.setStyleSheet("QPushButton{border-image: url(./Ui/exit.png)}"
-                                        "QPushButton:hover{background-color: red;border-image: url(./Ui/exit.png)}"
+        self.Close_Button.setStyleSheet("QPushButton{border-image: url(exit.png)}"
+                                        "QPushButton:hover{background-color: red;border-image: url(exit.png)}"
                                         )
 
         Add_dict_Frame.setCentralWidget(self.centralwidget)
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(90, 260, 471, 41))
-        font = QtGui.QFont()
-        font.setFamily("Agency FB")
-        font.setPointSize(16)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
 
         self.retranslateUi(Add_dict_Frame)
         QtCore.QMetaObject.connectSlotsByName(Add_dict_Frame)
@@ -74,7 +69,6 @@ class Ui_Add_dict_Frame(object):
         self.label_2.setText(_translate("Add_dict_Frame", "输入词组："))
         self.pushButton.setText(_translate("Add_dict_Frame", "取消"))
         self.pushButton_2.setText(_translate("Add_dict_Frame", "确定"))
-        self.label_3.setText(_translate("Add_dict_Frame", "输入格式：词 词频 词性（即三个属性以空格隔开）"))
 
 
 

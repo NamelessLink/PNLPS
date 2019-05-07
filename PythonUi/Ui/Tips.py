@@ -12,13 +12,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 class Ui_Tips(object):
     def setupUi(self, Tips):
         Tips.setObjectName("Tips")
-        Tips.resize(325, 173)
+        Tips.resize(325, 180)
         # Tips.setWindowFlags(Qt.Qt.FramelessWindowHint)
         self.label = QtWidgets.QLabel(Tips)
-        self.label.setGeometry(QtCore.QRect(10, 0, 231, 71))
+        self.label.setGeometry(QtCore.QRect(10, 0, 311, 71))
         font = QtGui.QFont()
-        font.setFamily("Agency FB")
-        font.setPointSize(14)
+        font.setFamily("黑体")
+        font.setPointSize(13)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(Tips)

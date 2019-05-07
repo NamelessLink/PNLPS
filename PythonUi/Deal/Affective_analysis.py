@@ -9,7 +9,7 @@ SECRET_KEY = '3btBkBGWqyj95KmaYImiPn8qMhav9svh'
 Client = AipNlp(APP_ID, API_KEY, SECRET_KEY)
 
 
-def sentimentClassify(text = ""):
+def sentimentClassify(text=""):
     lexer_dict = Lexical_analysis.lexer(text)
     temp_result = Client.sentimentClassify(text)
     classify_dict = {

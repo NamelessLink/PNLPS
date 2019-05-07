@@ -1,7 +1,6 @@
 import jieba
 import sys
 import re
-import jieba.posseg as pseg
 
 sys.path.append("D:\\PythonUi\\Deal")
 text_sent = (
@@ -14,9 +13,9 @@ text_sent = (
 
 
 def dict_add_func(text):
-    jieba.load_userdict("D:\\PythonUi\\Deal\\dict.txt")
+    jieba.load_userdict("dict.txt")
     flag = True
-    fp = open('D:\\PythonUi\\Deal\\dict.txt', "r", encoding='UTF-8')
+    fp = open('dict.txt', "r", encoding='UTF-8')
     lines = []
     for line in fp:
         lines.append(line)
@@ -35,7 +34,7 @@ def dict_add_func(text):
     else:
         lines.insert(-1, text+'\n')
         s = ''.join(lines)
-        fp = open('D:\\PythonUi\\Deal\\dict.txt', "w", encoding='UTF-8')
+        fp = open('dict.txt', "w", encoding='UTF-8')
         fp.write(s)
         fp.close()
         print('输入成功了')
@@ -43,10 +42,22 @@ def dict_add_func(text):
 
 
 def by_dict_division(text=""):
-    jieba.load_userdict("D:\\PythonUi\\Deal\\dict.txt")
+    jieba.load_userdict("dict.txt")
     word = jieba.cut(text)
     word = '/'.join(word)
     return word
+
+
+def dict_key_list(dict={}):
+    key_list = list(dict.keys())
+    return key_list
+
+
+def dict_query(dict={}, str=''):
+    if dict.get(str, None) is None:
+        return False
+    else:
+        return True
 
 
 if __name__ == '__main__':
