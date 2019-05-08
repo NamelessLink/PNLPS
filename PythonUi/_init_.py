@@ -20,6 +20,7 @@ from Ui.Result import *
 from Ui.Tips import *
 from Ui.Typo_coorection_Frame import *
 from Ui.Affective_analysis_Frame import *
+from Ui.loading import Ui_Frame
 
 
 class Open_MainWindow(QMainWindow, Ui_MainWindow):
@@ -161,6 +162,7 @@ class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
 
     # 确定按钮
     def slot_pushButton_3_Func(self):
+        Loading.show()
         self.result = self.get_text()
         if self.result is None:
             Tips.label.setText("输入为空或输入非中文字符")
@@ -187,17 +189,18 @@ class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
         if self.textEdit_2.toPlainText() != '':
             Path = self.textEdit_2.toPlainText()
             try:
-                TemPath = os.path.splitext(Path)
-                filename, filetype = TemPath
-                if filetype == '.txt':
-                    file = open(Path)
-                else:
-                    return "FileNotTxt"
+                file = open(Path)
             except FileNotFoundError as e:
                 print("错误:", e)
                 return "FileNotFound"
             else:
+                TemPath = os.path.splitext(Path)
+                filename, filetype = TemPath
+                if filetype != '.txt':
+                    return "FileNotTxt"
                 Text = re_text(file.read())
+                if Text is None:
+                    return
                 file.close()
                 return Text
         return
@@ -219,6 +222,7 @@ class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
             str2 += str1
         str2 = str_alt(str2)
         Result.textEdit.setPlainText(str2)
+        Loading.close()
         Result.show()
 
     # 关闭按钮
@@ -239,6 +243,7 @@ class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
 
     # 确定按钮
     def slot_pushButton_3_Func(self):
+        Loading.show()
         self.result = self.get_text()
         if self.result is None:
             Tips.label.setText("输入为空或输入非中文字符")
@@ -283,16 +288,15 @@ class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
         if self.textEdit_2.toPlainText() != '':
             Path = self.textEdit_2.toPlainText()
             try:
-                TemPath = os.path.splitext(Path)
-                filename, filetype = TemPath
-                if filetype == '.txt':
-                    file = open(Path)
-                else:
-                    return "FileNotTxt"
+                file = open(Path)
             except FileNotFoundError as e:
                 print("错误:", e)
                 return "FileNotFound"
             else:
+                TemPath = os.path.splitext(Path)
+                filename, filetype = TemPath
+                if filetype != '.txt':
+                    return "FileNotTxt"
                 Text = re_text(file.read())
                 file.close()
                 return Text
@@ -306,11 +310,12 @@ class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
             result_dict = Typo_coorection.encet(text)
             str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
             if result_dict['准确率'] == 0:
-                str1 = '该文本认定无错别字\n原文本：' + result_dict['原文本'] + '\n分词结果：' + result_dict['分词结果']
+                str1 = "\n" + '该文本认定无错别字\n原文本：' + result_dict['原文本'] + '\n分词结果：' + result_dict['分词结果'] + '\n'
             str2 += str1
             jsonfile_save(result_dict, self.path)
         str2 = str_alt(str2)
         Result.textEdit.setPlainText(str2)
+        Loading.close()
         Result.show()
 
     # 关闭按钮
@@ -392,6 +397,17 @@ class Open_Tips(QMainWindow, Ui_Tips):
         super(Open_Tips, self).__init__(parent)
         self.setupUi(self)
 
+    @staticmethod
+    def slot_pushButton_Func():
+        Tips.close()
+        Loading.close()
+
+
+class Open_Loading(QMainWindow, Ui_Frame):
+    def __init__(self, parent=None):
+        super(Open_Loading, self).__init__(parent)
+        self.setupUi(self)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -406,6 +422,7 @@ if __name__ == '__main__':
     History_Detail = Open_History_Detail_Frame()
     Tips = Open_Tips()
     Exit = Open_Exit()
+    Loading = Open_Loading()
 
     # MainWindow按钮绑定
     MainWindow.pushButton.clicked.connect(MainWindow.slot_pushButton_Func)
@@ -440,7 +457,7 @@ if __name__ == '__main__':
     History_Detail.closeButton.clicked.connect(History_Detail.slot_closeButton_Func)
 
     # Tips按钮绑定
-    Tips.pushButton.clicked.connect(Tips.close)
+    Tips.pushButton.clicked.connect(Tips.slot_pushButton_Func)
 
     # Result按钮绑定
     Result.pushButton.clicked.connect(Result.slot_pushButton_Func)

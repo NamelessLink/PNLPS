@@ -13,6 +13,7 @@ class Ui_Tips(object):
     def setupUi(self, Tips):
         Tips.setObjectName("Tips")
         Tips.resize(650, 360)
+        Tips.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         # Tips.setWindowFlags(Qt.Qt.FramelessWindowHint)
         self.label = QtWidgets.QLabel(Tips)
         self.label.setGeometry(QtCore.QRect(20, 0, 622, 142))
