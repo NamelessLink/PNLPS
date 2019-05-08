@@ -1,11 +1,11 @@
+import datetime
 import json
-import time
 
 
 def jsonfile_save(dict={}, file_path=''):
     with open(file_path, "r") as json_file:
         load_dict = json.load(json_file)
-        time_stamp = time.strftime('%y.%m.%d-%H:%M:%S', time.localtime(time.time()))
+        time_stamp = datetime.datetime.now().strftime('%y.%m.%d-%H:%M:%S:%f')
         load_dict[time_stamp] = dict
 
     with open(file_path, "w") as json_file:

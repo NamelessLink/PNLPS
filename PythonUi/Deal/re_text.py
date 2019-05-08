@@ -27,5 +27,10 @@ def re_text(text=''):
         return
 
 
+
 if __name__ == '__main__':
-    print(re_text("asdfasfasf"))
+    text = "asdfasfasf\nasdfsafsafsa"
+    print(re.split("\s", text))
+    list = re.split("\s", text)
+    print(list)
+    print(re_text(text))

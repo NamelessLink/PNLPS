@@ -25,6 +25,10 @@ class Ui_Tips(object):
         self.pushButton.setGeometry(QtCore.QRect(260, 200, 142, 62))
         self.pushButton.setMouseTracking(False)
         self.pushButton.setObjectName("pushButton")
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(26)
+        self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;}"
                                         "QPushButton:hover{border:2px groove black;border-radius:10px;padding:2px 4px;}"
                                         )

@@ -48,7 +48,7 @@ class Ui_Affective_analysis_Frame(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Affective_analysis_Frame)
-        self.label_2.setGeometry(QtCore.QRect(60, 260, 402, 62))
+        self.label_2.setGeometry(QtCore.QRect(140, 260, 402, 62))
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(30)

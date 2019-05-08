@@ -80,7 +80,7 @@ class Ui_History(object):
         self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.tableWidget.setFont(font)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
         self.closeButton.setGeometry(QtCore.QRect(540, 760, 162, 82))

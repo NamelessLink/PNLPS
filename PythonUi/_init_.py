@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog, QTableWidgetItem
@@ -59,10 +60,13 @@ class Open_MainWindow(QMainWindow, Ui_MainWindow):
             History.tableWidget.setItem(i, 1, newItem2)
             i += 1
         History.show()
+        MainWindow.close()
+
+
 
     def slot_pushButton_5_Func(self):
         i = 0
-        lenth = 7
+        lenth = 17
         self.dict = jsonfile_load('./Typo_coorection.json')
         self.list = dict_key_list(self.dict)
         if len(self.list) <= lenth:
@@ -75,6 +79,8 @@ class Open_MainWindow(QMainWindow, Ui_MainWindow):
             History.tableWidget.setItem(i, 1, newItem2)
             i += 1
         History.show()
+        MainWindow.close()
+
 
     @staticmethod
     def slot_closeButton_Func():
@@ -127,7 +133,8 @@ class Open_Add_dict_Frame(QMainWindow, Ui_Add_dict_Frame):
 class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
     # 变量
     result = ''
-
+    list = []
+    list_dict = []
     path = 'Affective_analysis.json'
 
     def __init__(self, parent=None):
@@ -197,10 +204,20 @@ class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
 
     # 进行文本处理
     def text_deal(self):
-        result_dict = Affective_analysis.sentimentClassify(self.result)
-        str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
-        str2 = str_alt(str1)
-        jsonfile_save(result_dict, self.path)
+        self.list = re.split("\s", self.result)
+        str2 = ''
+        # result_dict = Affective_analysis.sentimentClassify(self.result)
+        # str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
+        # str2 = str_alt(str1)
+        # jsonfile_save(result_dict, self.path)
+        # Result.textEdit.setPlainText(str2)
+        for text in self.list:
+            result_dict = Affective_analysis.sentimentClassify(text)
+            jsonfile_save(result_dict, self.path)
+            self.list_dict.append(result_dict)
+            str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
+            str2 += str1
+        str2 = str_alt(str2)
         Result.textEdit.setPlainText(str2)
         Result.show()
 
@@ -213,7 +230,7 @@ class Open_Affective_analysis_Frame(QMainWindow, Ui_Affective_analysis_Frame):
 class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
     # 变量
     result = ''
-
+    list = []
     path = 'Typo_coorection.json'
 
     def __init__(self, parent=None):
@@ -283,18 +300,18 @@ class Open_Typo_coorection_Frame(QMainWindow, Ui_Typo_coorection_Frame):
 
     # 文本处理
     def text_deal(self):
-        result_dict = Typo_coorection.encet(self.result)
-        str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
-        str2 = str_alt(str1)
-        jsonfile_save(result_dict, self.path)
-        if result_dict['准确率'] == 0:
-            str1 = '该文本认定无错别字\n原文本：' + result_dict['原文本'] + '\n分词结果：' + result_dict['分词结果']
-            # print(str1)
-            Result.textEdit.setPlainText(str1)
-            Result.show()
-        else:
-            Result.textEdit.setPlainText(str2)
-            Result.show()
+        self.list = re.split("\s", self.result)
+        str2 = ''
+        for text in self.list:
+            result_dict = Typo_coorection.encet(text)
+            str1 = json.dumps(result_dict, indent=4, separators=(',', ':'), ensure_ascii=False)
+            if result_dict['准确率'] == 0:
+                str1 = '该文本认定无错别字\n原文本：' + result_dict['原文本'] + '\n分词结果：' + result_dict['分词结果']
+            str2 += str1
+            jsonfile_save(result_dict, self.path)
+        str2 = str_alt(str2)
+        Result.textEdit.setPlainText(str2)
+        Result.show()
 
     # 关闭按钮
     @staticmethod
@@ -309,9 +326,9 @@ class Open_History_Frame(QMainWindow, Ui_History):
 
     def slot_Item_Func(self, item=QtWidgets.QTableWidgetItem()):
         key = self.tableWidget.item(item.row(), 0).text()
-        str1 = MainWindow.dict[key]
-        str2 = json.dumps(str1, indent=4, separators=(',', ':'), ensure_ascii=False)
-        str2 = str_alt(str2)
+        str1 = key + ":"
+        str1 += json.dumps(MainWindow.dict[key], indent=4, separators=(',', ':'), ensure_ascii=False)
+        str2 = str_alt(str1)
         History_Detail.textEdit.setPlainText(str2)
         History_Detail.show()
 
@@ -323,6 +340,7 @@ class Open_History_Frame(QMainWindow, Ui_History):
         History.tableWidget.setHorizontalHeaderItem(0, newItem)
         History.tableWidget.setHorizontalHeaderItem(1, newItem2)
         History.close()
+        MainWindow.show()
 
 
 class Open_History_Detail_Frame(QDialog, Ui_HistoryDetail):
